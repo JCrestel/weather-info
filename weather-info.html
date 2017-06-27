@@ -8,7 +8,7 @@
       }
     </style>
 
-     <h1>
+    <h1>
       <img>
       Weather in <span id="city">[[city]]</span>:
     </h1>
@@ -40,35 +40,18 @@
             type: Boolean,
             value: false,
             observer: '_update'
-          },
-          metric: {
-            type: String,
-            computed: 'computeMetric(imperial)'
-          },
-          unit: {
-            type: String,
-            computed: 'computeUnit(imperial)'
-          },
-          apiKey: {
-            value: "fb7fd61e375c2260cbc19c3ad64d3f0e"
           }
         };
       }
 
-      computeMetric(imperial){
-        return imperial ? 'F' : 'C';
-      }
-
-      computeUnit(imperial){
-        return imperial ? 'imperial' : 'metric';
-      }
-
       _update() {       
         // fetch from open weather API
-        fetch("http://api.openweathermap.org/data/2.5/weather?q=" + this.city + "&units="+ this.unit +"&appid=" + this.apiKey)
+        const unit = this.imperial ? "imperial" : "metric";
+        const metric = this.imperial ? 'F' : 'C';
+        fetch("http://api.openweathermap.org/data/2.5/weather?q=" + this.city + "&units="+ unit +"&appid=fb7fd61e375c2260cbc19c3ad64d3f0e")
           .then((result) => { return result.json() })
           .then((result) => {            
-            this.$.temperature.textContent = result.main.temp + " °" + this.metric;
+            this.$.temperature.textContent = result.main.temp + " °" + metric;
             this.$.description.textContent = result.weather[0].main;
             this.shadowRoot.querySelector('img').src = "http://openweathermap.org/img/w/" + result.weather[0].icon + ".png";
           })
