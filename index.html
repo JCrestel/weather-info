@@ -2,15 +2,16 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="refresh" content="0;url=demo/" />
-    <title>weather-info</title>
+    
+    <title>weather-info demo</title>
+
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="weather-info-polymer.html">
+    <link rel="import" href="weather-info-webcomp.html">
   </head>
   <body>
-    <!--
-        ELEMENT API DOCUMENTATION SUPPORT COMING SOON
-        Visit demo/index.html to see live examples of your element running.
-        This page will automatically redirect you there when run in the browser
-        with `polymer serve`.
-      -->
+    <weather-info-webcomp city="Brest, FR"></weather-info-webcomp>
+    <weather-info-polymer city="Paris"></weather-info-polymer>
   </body>
 </html>

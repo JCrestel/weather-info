@@ -1,13 +1,12 @@
-<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="bower_components/polymer/polymer-element.html">
 
-<dom-module id="weather-info">
+<dom-module id="weather-info-polymer">
   <template>
     <style>
       :host {
         display: block;
       }
     </style>
-
     <h1>
       <img>
       Weather in <span id="city">[[city]]</span>:
@@ -18,16 +17,8 @@
   </template>
 
   <script>
-    /**
-     * `weather-info`
-     * Get the weather of one city
-     *
-     * @customElement
-     * @polymer
-     * @demo demo/index.html
-     */
-    class WeatherInfo extends Polymer.Element {
-      static get is() { return 'weather-info'; }
+    class WeatherInfoPolymer extends Polymer.Element {
+      static get is() { return 'weather-info-polymer'; }
       
       static get properties() {
         return {
@@ -58,6 +49,6 @@
         }
       }    
 
-    window.customElements.define(WeatherInfo.is, WeatherInfo);
+    window.customElements.define(WeatherInfoPolymer.is, WeatherInfoPolymer);
   </script>
 </dom-module>
